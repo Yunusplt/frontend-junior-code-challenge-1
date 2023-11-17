@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Papa from "papaparse";
+import Artikel from "../assets/Artikel.csv"
 
 
 const Home = () => {
@@ -10,8 +11,7 @@ const Home = () => {
 
 useEffect(() => {
         const getData = async () => {
-          const response = await fetch(
-            "https://github.com/Yunusplt/frontend-junior-code-challenge-1/blob/master/Artikel.csv");
+          const response = await fetch(Artikel);
           console.log(response);
           const reader = response.body.getReader();
           const result = await reader.read();
@@ -26,7 +26,7 @@ useEffect(() => {
   return (
     <div>
     <h1>Hello</h1>
-      <table>
+      <table className='table table-striped'>
         <thead>
           <tr>
             {data[0] &&
